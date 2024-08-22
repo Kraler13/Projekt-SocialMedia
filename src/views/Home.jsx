@@ -1,6 +1,5 @@
 import './Home.css'
 
-
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Post from "../components/Post";
