@@ -30,18 +30,15 @@ const LogIn = (props) => {
         })
             .then((res) => {
                 if (Array.isArray(res.data.username)) {
-                    setlogInMessage(res.data.username[0])
-                }
-                else if (Array.isArray(res.data.password)) {
-                    setlogInMessage(res.data.password[0])
-                }
-                else if (Array.isArray(res.data.error)) {
-                    setlogInMessage("Incorrect username or password")
-                }
-                else {
-                    setlogInMessage("")
-                    props.setUser
-                    localStorage.setItem('user', JSON.stringify(res.data))
+                    setlogInMessage(res.data.username[0]);
+                } else if (Array.isArray(res.data.password)) {
+                    setlogInMessage(res.data.password[0]);
+                } else if (res.data.error) {
+                    setlogInMessage("Incorrect username or password");
+                } else {
+                    setlogInMessage("");
+                    props.setUser(res.data);
+                    localStorage.setItem("user", JSON.stringify(res.data));
                 }
 
             })
