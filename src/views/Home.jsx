@@ -50,7 +50,7 @@ const Home = (props) => {
             {props.user && <AddPost getNew={getNew}/>}
             <div className="postList">
                 {posts.map((post) => {
-                    return <Post post={post} key={post.id} />
+                    return <Post post={post} key={post.id} user={props.user}/>
                 })}
                 <button onClick={getNext} className='btn loadMore'>Load</button>
             </div>

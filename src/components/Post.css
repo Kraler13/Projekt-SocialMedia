@@ -37,3 +37,20 @@
     text-align: right;
     padding: 5px;
 }
+
+.deleteConfirm {
+    position: fixed;
+    background-color: white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid black;
+}
+
+.deleteConfirm .yes{
+    background-color: green;
+}
+
+.deleteConfirm .no{
+    background-color: red;
+}
