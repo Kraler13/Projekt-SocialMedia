@@ -10,36 +10,36 @@ const Home = (props) => {
 
     const getLatestPosts = () => {
         axios.post("https://akademia108.pl/api/social-app/post/latest")
-        .then((res)=>{
-            setPosts(res.data)
-        })
-        .catch((error) => {
-            console.error(error)
-        })
+            .then((res) => {
+                setPosts(res.data)
+            })
+            .catch((error) => {
+                console.error(error)
+            })
     }
 
     const getNext = () => {
         axios.post("https://akademia108.pl/api/social-app/post/older-then", {
             date: posts[posts.length - 1].created_at
         })
-        .then((res)=>{
-            setPosts(posts.concat(res.data))
-        })
-        .catch((error) => {
-            console.error(error)
-        })
+            .then((res) => {
+                setPosts(posts.concat(res.data))
+            })
+            .catch((error) => {
+                console.error(error)
+            })
     }
 
     const getNew = () => {
         axios.post("https://akademia108.pl/api/social-app/post/newer-then", {
             date: posts[0].created_at
         })
-        .then((res)=>{
-            setPosts(res.data.concat(posts))
-        })
-        .catch((error) => {
-            console.error(error)
-        })
+            .then((res) => {
+                setPosts(res.data.concat(posts))
+            })
+            .catch((error) => {
+                console.error(error)
+            })
     }
     useEffect(() => {
         getLatestPosts();
@@ -47,10 +47,11 @@ const Home = (props) => {
     console.log(posts)
     return (
         <div className="Home">
-            {props.user && <AddPost getNew={getNew}/>}
+            {props.user && <AddPost getNew={getNew} />}
+            {props.user && <FollowRecommendation user={props.user} getLatestPosts={getLatestPosts} posts={posts} />}
             <div className="postList">
                 {posts.map((post) => {
-                    return <Post post={post} key={post.id} user={props.user}/>
+                    return <Post post={post} key={post.id} user={props.user} setPosts={setPosts} getLatestPosts={getLatestPosts} />
                 })}
                 <button onClick={getNext} className='btn loadMore'>Load</button>
             </div>

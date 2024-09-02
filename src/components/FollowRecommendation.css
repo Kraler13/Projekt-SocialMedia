@@ -1,0 +1,22 @@
+.followRecc {
+    display: flex;
+    border: 1px solid black;
+    max-width: 600px;
+    margin: auto;
+    padding: 5px;
+}
+
+.recommends {
+    width: 33,3%;
+    padding: 15px;
+}
+
+.recommends img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.recommends h3{
+    margin: 5px;
+}
